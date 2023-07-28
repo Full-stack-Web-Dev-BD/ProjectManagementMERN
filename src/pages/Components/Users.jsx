@@ -23,17 +23,13 @@ const rows = [
 export default function Users() {
   return (
     <div className='col-md-10 offset-md-1 mt-4'>
-      <Typography variant='h4'className='mb-4 mt-4'> Manage Employee </Typography>
-      <Button variant='contained'>Add Employee</Button>
+      <Typography variant='h4'> Admin Users</Typography>
     <TableContainer component={Paper} className="mt-4">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell> Name </TableCell>
-            <TableCell> Image </TableCell>
             <TableCell> Email </TableCell>
-            <TableCell> Address </TableCell>
-            <TableCell> Salary </TableCell>
+            <TableCell align="right">Role</TableCell>
             <TableCell align="right"> <span style={{marginRight:'30px'}}>Action</span> </TableCell>
           </TableRow>
         </TableHead>
@@ -43,10 +39,7 @@ export default function Users() {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align=""> Img </TableCell>
-              <TableCell align=""> email </TableCell>
-              <TableCell align=""> Address </TableCell>
-              <TableCell align=""> 2334 </TableCell>
+              <TableCell align="right"> Admin </TableCell>
               <TableCell align="right" style={{display:'flex',gap:'10px'}}>
                 <Button variant='contained' color='secondary'> Edit </Button>
                 <Button variant='outlined' color='secondary' >Delete </Button>
