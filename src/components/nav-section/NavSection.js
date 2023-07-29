@@ -41,6 +41,7 @@ function NavItem({ item }) {
   const doLogout= (isLogout)=>{
     if(isLogout){
       window.localStorage.removeItem("token")
+      window.location.href="/login"
     }
   }
   return (

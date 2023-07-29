@@ -10,6 +10,7 @@ import ProfilePage from './pages/ProfilePage';
 import MyProjects from './pages/Components/MyProjects';
 import ProjectDetails from './pages/Components/ProjectDetails'; 
 import SignupPage from './pages/SignupPage';
+import SigninPage from './pages/SignInPage';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -27,7 +28,7 @@ export default function Router() {
     },
     {
       path: 'login',
-      element: <LoginPage />,
+      element: <SigninPage />,
     }, 
     {
       path: 'signup',
