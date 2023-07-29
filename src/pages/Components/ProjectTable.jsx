@@ -20,7 +20,7 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-export default function BasicTable() {
+export default function ProjectTable() {
   return (
     <div className="col-md-10 offset-md-1 mt-4">
       <Typography variant="h4"> Admin Users</Typography>

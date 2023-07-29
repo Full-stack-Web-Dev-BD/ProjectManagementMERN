@@ -6,18 +6,10 @@ import { Grid, Container, Typography } from '@mui/material';
 // components
 import Iconify from '../components/iconify';
 // sections
-import {
-  AppTasks,
-  AppNewsUpdate,
-  AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
-  AppTrafficBySite,
-  AppWidgetSummary,
-  AppCurrentSubject,
-  AppConversionRates,
-} from '../sections/@dashboard/app';
-import AdminUsers from './Components/AdminUsers';
+import { 
+  AppWidgetSummary, 
+} from '../sections/@dashboard/app'; 
+import ProjectTable from './Components/ProjectTable';
 
 // ----------------------------------------------------------------------
 
@@ -42,7 +34,7 @@ export default function DashboardAppPage() {
           </Grid>
         </Grid>
       </Container>
-      <AdminUsers/>
+      <ProjectTable/>
     </>
   );
 }
