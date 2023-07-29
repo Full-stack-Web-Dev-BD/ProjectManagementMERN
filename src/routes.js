@@ -6,8 +6,9 @@ import SimpleLayout from './layouts/simple';
 import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
-import DashboardAppPage from './pages/DashboardAppPage';
 import ProfilePage from './pages/ProfilePage';
+import MyProjects from './pages/Components/MyProjects';
+import ProjectDetails from './pages/Components/ProjectDetails';
 
 // ----------------------------------------------------------------------
 
@@ -18,7 +19,8 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
-        { path: 'app', element: <DashboardAppPage /> },
+        { path: 'app', element: <MyProjects /> },
+        { path: 'app/:id', element: <ProjectDetails /> },
         { path: 'employee', element: <UserPage /> }, 
         { path: 'profile', element: <ProfilePage /> },
       ],

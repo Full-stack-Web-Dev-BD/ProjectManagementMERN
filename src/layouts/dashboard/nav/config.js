@@ -10,11 +10,6 @@ const navConfig = [
     title: 'dashboard',
     path: '/dashboard/app',
     icon: icon('ic_analytics'),
-  },
-  {
-    title: 'Manage Employee',
-    path: '/dashboard/employee',
-    icon: icon('ic_user'),
   }, 
   {
     title: 'Profile',
