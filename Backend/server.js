@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const morgan  = require("morgan")
 const cors = require('cors')
 dotenv.config();
+const path = require('path');
 
 const app = express();
 app.use(cors())
@@ -21,6 +22,9 @@ mongoose.connect("mongodb+srv://dappmaster:kollol@cluster0.actqmgr.mongodb.net/p
 app.use('/api/auth', require('./Routes/UserRoutes'));
 app.use('/api/projects', require('./Routes/ProjectRoutes')); 
 app.use('/api/runs', require('./Routes/RunsRouter')); 
+
+const uploadFolder = path.join(__dirname, 'uploads');
+app.use('/uploads', express.static(uploadFolder));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

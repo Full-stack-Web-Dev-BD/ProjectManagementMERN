@@ -107,9 +107,9 @@ export default function SigninPage() {
             </Typography>
 
             <Typography className="text-light" variant="body2" sx={{ mb: 5 }}>
-              Already have an account? {''}
-              <a href="/login">
-                <Link variant="subtitle2">Go to Login !</Link>
+              Don't have an account? 
+              <a href="/signup">
+                <Link variant="subtitle2"> Register now !</Link>
               </a>
             </Typography>
             <form onSubmit={(e) => handleFormSubmit(e)}>

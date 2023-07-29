@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@mui/material';
-// mock
-import account from '../../../_mock/account';
-// hooks
+import jwtDecode from 'jwt-decode';
+import { BASE_URL } from '../../../utils/constant';
+
+ 
 import useResponsive from '../../../hooks/useResponsive';
 // components
 import Logo from '../../../components/logo';
@@ -36,12 +37,19 @@ Nav.propTypes = {
 
 export default function Nav({ openNav, onCloseNav }) {
   const { pathname } = useLocation();
+  const [userDetails, setUserDetails] = useState({});
 
   const isDesktop = useResponsive('up', 'lg');
 
   useEffect(() => {
     if (openNav) {
       onCloseNav();
+    }
+
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      const user = jwtDecode(token); 
+      setUserDetails(user.user);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
@@ -54,28 +62,27 @@ export default function Nav({ openNav, onCloseNav }) {
       }}
     >
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-        <Logo/>
+        <Logo />
       </Box>
 
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none">
           <StyledAccount>
-            <Avatar src={account.photoURL} alt="photoURL" />
-
+            <Avatar src={`${BASE_URL}/uploads/${userDetails.image}`} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
+                <span style={{ textTransform: 'capitalize' }}>{userDetails.name}</span>
               </Typography>
 
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+                <span style={{ textTransform: 'capitalize' }}>{userDetails.role}</span>
               </Typography>
             </Box>
           </StyledAccount>
         </Link>
       </Box>
 
-      <NavSection data={navConfig} /> 
+      <NavSection data={navConfig} />
     </Scrollbar>
   );
 

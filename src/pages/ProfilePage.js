@@ -35,7 +35,10 @@ export default function ProfilePage() {
           <CardHeader
             avatar={
               <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                {userDetails.name[0].toLocaleUpperCase()}
+                {
+                  userDetails.name?
+                userDetails?.name[0]?.toLocaleUpperCase():''
+                }
               </Avatar>
             }
             title={userDetails.name}
