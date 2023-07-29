@@ -62,7 +62,7 @@ router.post(
       // Generate JWT token
       const payload = {
         user: {
-          id: user.id,
+          ...user._doc
         },
       };
 
@@ -107,7 +107,7 @@ router.post(
       // Generate JWT token
       const payload = {
         user: {
-          id: user.id,
+          ...user._doc
         },
       };
 

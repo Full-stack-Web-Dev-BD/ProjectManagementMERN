@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { Link, Container, Typography, Divider, Stack, Button, TextField } from '@mui/material';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { BASE_URL } from '../utils/constant';
+
 
 // hooks
 import useResponsive from '../hooks/useResponsive';
@@ -53,7 +55,7 @@ export default function SigninPage() {
         password: Password
       }
 
-      const response = await axios.post('http://localhost:5000/api/auth/login', loginData);
+      const response = await axios.post(`${BASE_URL}/api/auth/login`, loginData);
       window.localStorage.setItem("token", response.data?.token)
       window.location.href="/dashboard/app"
     } catch (err) {

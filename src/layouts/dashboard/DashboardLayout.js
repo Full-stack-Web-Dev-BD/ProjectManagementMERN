@@ -39,7 +39,6 @@ export default function DashboardLayout() {
   const [authenticated, setAuthenticated] = useState(false);
   useEffect(() => {
     const token = window.localStorage.getItem('token')
-    console.log("token is " , token)
     if (token) {
       setAuthenticated(true);
     } else {
