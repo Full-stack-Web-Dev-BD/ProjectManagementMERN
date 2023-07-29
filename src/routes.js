@@ -8,8 +8,8 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProfilePage from './pages/ProfilePage';
 import MyProjects from './pages/Components/MyProjects';
-import ProjectDetails from './pages/Components/ProjectDetails';
-
+import ProjectDetails from './pages/Components/ProjectDetails'; 
+import SignupPage from './pages/SignupPage';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -28,7 +28,11 @@ export default function Router() {
     {
       path: 'login',
       element: <LoginPage />,
-    },
+    }, 
+    {
+      path: 'signup',
+      element: <SignupPage />,
+    }, 
     {
       element: <SimpleLayout />,
       children: [
