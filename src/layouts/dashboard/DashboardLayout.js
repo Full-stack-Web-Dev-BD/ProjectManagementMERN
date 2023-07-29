@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-// @mui
 import { styled } from '@mui/material/styles';
-//
+
+import PageAuth from '../../pages/PageAuth';
+
 import Header from './header';
 import Nav from './nav';
 
@@ -33,17 +34,35 @@ const Main = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function DashboardLayout() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(null);
 
+  const [authenticated, setAuthenticated] = useState(false);
+  useEffect(() => {
+    const token = window.localStorage.getItem('token')
+    console.log("token is " , token)
+    if (token) {
+      setAuthenticated(true);
+    } else {
+      setAuthenticated(false);
+    }
+  }, []);
   return (
-    <StyledRoot>
-      <Header onOpenNav={() => setOpen(true)} />
+    <>
+      {authenticated === null ? (
+        <p className="text-center">Loading...</p>
+      ) : authenticated === false ? (
+        <PageAuth/>
+      ) : (
+        <StyledRoot>
+          <Header onOpenNav={() => setOpen(true)} />
 
-      <Nav openNav={open} onCloseNav={() => setOpen(false)} />
+          <Nav openNav={open} onCloseNav={() => setOpen(false)} />
 
-      <Main>
-        <Outlet />
-      </Main>
-    </StyledRoot>
+          <Main>
+            <Outlet />
+          </Main>
+        </StyledRoot>
+      )}
+    </>
   );
 }

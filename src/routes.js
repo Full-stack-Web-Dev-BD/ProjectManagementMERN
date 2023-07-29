@@ -4,7 +4,6 @@ import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
 //
 import UserPage from './pages/UserPage';
-import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProfilePage from './pages/ProfilePage';
 import MyProjects from './pages/Components/MyProjects';
