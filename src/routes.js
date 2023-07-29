@@ -2,8 +2,6 @@ import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
-//
-import UserPage from './pages/UserPage';
 import Page404 from './pages/Page404';
 import ProfilePage from './pages/ProfilePage';
 import MyProjects from './pages/Components/MyProjects';
@@ -21,7 +19,6 @@ export default function Router() {
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <MyProjects /> },
         { path: 'app/:id', element: <ProjectDetails /> },
-        { path: 'employee', element: <UserPage /> }, 
         { path: 'profile', element: <ProfilePage /> },
       ],
     },

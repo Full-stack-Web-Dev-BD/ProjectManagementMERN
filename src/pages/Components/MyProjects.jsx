@@ -10,6 +10,7 @@ import { Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import { BASE_URL } from '../../utils/constant';
  
 
@@ -18,13 +19,17 @@ export default function MyProjects() {
   const [loading, setLoading] = useState(true);
   const [projects, setprojects] = useState([]);
   useEffect(() => {
+    const token = window.localStorage.getItem('token')
+    if(token){
+      const decodedToken= jwtDecode(token)
+      console.log(decodedToken.user._id)
     const fetchProjects = async () => {
-      const projects = await axios.get(`${BASE_URL}/api/projects`);
-      console.log(projects.data)
+      const projects = await axios.get(`${BASE_URL}/api/projects/user/${decodedToken.user._id}`);
       setprojects(projects.data);
       setLoading(false);
     };
     fetchProjects();
+    }
   }, []);
   return (
     <div className="col-md-10 offset-md-1 mt-4">
@@ -59,6 +64,7 @@ export default function MyProjects() {
           </TableBody>
         </Table>
         {loading ? <h3 className="text-center">Loading...</h3> : ''}
+        {!loading && projects.length<1 ? <h3 className="text-center mt-4 mb-4">Project Not exist</h3> : ''}
       </TableContainer>
     </div>
   );

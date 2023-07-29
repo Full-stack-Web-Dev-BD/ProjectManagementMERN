@@ -59,12 +59,7 @@ router.post(
     try {
       const userId = req.params.userId;
   
-      const projects = await Project.find({ user: userId });
-  
-      if (projects.length === 0) {
-        return res.status(404).json({ message: 'No projects found for this user' });
-      }
-  
+      const projects = await Project.find({ user: userId });  
       res.json(projects);
     } catch (err) {
       console.error(err.message);
