@@ -16,7 +16,13 @@ export default function NavSection({ data = [], ...other }) {
     <Box {...other}>
       <List disablePadding sx={{ p: 1 }}>
         {data.map((item) => (
-          <NavItem key={item.title} item={item} />
+          <>
+            {item.title === 'Logout' ? (
+              <NavItem key={item.title} item={{...item, logout:true}}  />
+            ) : (
+              <NavItem key={item.title} item={item} />
+            )}
+          </>
         ))}
       </List>
     </Box>
@@ -30,10 +36,16 @@ NavItem.propTypes = {
 };
 
 function NavItem({ item }) {
-  const { title, path, icon, info } = item;
+  const { title, path, icon, info, logout } = item;
 
+  const doLogout= (isLogout)=>{
+    if(isLogout){
+      window.localStorage.removeItem("token")
+    }
+  }
   return (
     <StyledNavItem
+      onClick={(e) => doLogout(logout)}
       component={RouterLink}
       to={path}
       sx={{

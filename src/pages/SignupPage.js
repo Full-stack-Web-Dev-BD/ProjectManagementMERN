@@ -59,7 +59,9 @@ export default function SignupPage() {
 
       // Replace 'YOUR_BACKEND_API_URL' with the actual URL of your backend API endpoint for user signup
       const response = await axios.post('http://localhost:5000/api/auth/signup', formData);
-      toast.success('User signup successful');
+      console.log(response.data?.token)
+      window.localStorage.setItem("token", response.data?.token)
+      window.location.href="/dashboard/app"
     } catch (err) {
       if (err.response && err.response.data && err.response.data.errors) {
         // Loop over the errors and show toast messages
@@ -152,6 +154,7 @@ export default function SignupPage() {
                   className="text-light"
                   name="Password"
                   label=""
+                  type='password'
                   placeholder="Password"
                 />
               </Stack>
