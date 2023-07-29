@@ -22,7 +22,7 @@ export default function PageAuth() {
   return (
     <>
       <Helmet>
-        <title> Un-Authorize access | Minimal UI </title>
+        <title> Un-Authorize access | TestLabAI </title>
       </Helmet>
 
       <Container>
