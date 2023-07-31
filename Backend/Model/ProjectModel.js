@@ -2,24 +2,32 @@
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
-  title: {
+  projectName: {
     type: String,
     required: true,
   },
-  data: {
+  state: {
     type: String,
     required: true,
   },
-  folderIn: {
+  testsuite: {
     type: String,
     required: true,
   },
-  folderOut: {
+  rulSet: {
     type: String,
     required: true,
   },
-  timer: {
-    type: Number,
+  swRequirements: {
+    type: String,
+    required: true,
+  },
+  codePath: {
+    type: String,
+    required: true,
+  },
+  testCases: {
+    type: String,
     required: true,
   },
   user: {

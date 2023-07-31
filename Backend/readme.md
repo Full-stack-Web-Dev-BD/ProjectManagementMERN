@@ -1,0 +1,11 @@
+{
+"testrunName":"testrunName",
+"state":"state",
+"testDuraton":"testDuraton",
+"numberOfFunctionFailed":"numberOfFunctionFailed",
+"NumberOfFunctionTested":"NumberOfFunctionTested",
+"NumberOfFunctionWOTest":"NumberOfFunctionWOTest",
+"NumberOfFunctionPassed":"NumberOfFunctionPassed",
+"BranchCoverage":"BranchCoverage",
+"StatementCoverage":"StatementCoverage",
+}
