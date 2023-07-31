@@ -12,6 +12,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { BASE_URL } from '../../utils/constant';
+import ProjectCreateModal from './CreateProjectForm';
  
 
  
@@ -33,7 +34,10 @@ export default function MyProjects() {
   }, []);
   return (
     <div className="col-md-10 offset-md-1 mt-4">
+      <div className='d-flex' style={{justifyContent:'space-between'}}>
       <Typography variant="h4"> My Projects</Typography>
+      <ProjectCreateModal/>
+      </div>
       <TableContainer component={Paper} className="mt-4">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
