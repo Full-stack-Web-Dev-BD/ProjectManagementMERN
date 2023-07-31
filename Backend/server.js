@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(morgan("dev"))
 
 // MongoDB Connection
-mongoose.connect("mongodb+srv://dappmaster:kollol@cluster0.actqmgr.mongodb.net/projectRunTest?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://dappmaster:kollol@cluster0.actqmgr.mongodb.net/projectAI?retryWrites=true&w=majority")
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 

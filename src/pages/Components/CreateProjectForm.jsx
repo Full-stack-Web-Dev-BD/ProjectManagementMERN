@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { Input, Select } from '@mui/material';
+import { Input } from '@mui/material';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { BASE_URL, LOCAL_USER } from '../../utils/constant';
 
 const style = {
   position: 'absolute',
@@ -29,6 +32,48 @@ export default function ProjectCreateModal() {
   const [codePath, setcodePath] = useState('');
   const [testCases, settestCases] = useState('');
 
+  const createProject = (e) => {
+    e.preventDefault();
+    // Validate all variables are filled
+    console.log(LOCAL_USER)
+    if (
+      projectName.trim() === '' ||
+      state.trim() === '' ||
+      testsuite.trim() === '' ||
+      rulSet.trim() === '' ||
+      swRequirements.trim() === '' ||
+      codePath.trim() === '' ||
+      testCases.trim() === ''
+    ) {
+      // Show a toast message using React Toastify
+      toast.error('Please fill in all the fields');
+      return;
+    }
+
+    // All variables are filled, make the API call
+    const data = {
+      projectName,
+      state,
+      testsuite,
+      rulSet,
+      swRequirements,
+      codePath,
+      testCases,
+      user:LOCAL_USER.user?._id
+    };
+    axios
+      .post(`${BASE_URL}/api/projects`, data)
+      .then((response) => {
+        // Handle successful API response here
+        toast.success('Project was successfully created');
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
+      })
+      .catch((error) => {
+        // Handle error cases here
+      });
+  };
   return (
     <div>
       <Button variant="contained" onClick={handleOpen}>
@@ -36,7 +81,7 @@ export default function ProjectCreateModal() {
       </Button>
 
       <Modal
-      style={{border:'0px'}}
+        style={{ border: '0px' }}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -45,57 +90,63 @@ export default function ProjectCreateModal() {
         <Box sx={style}>
           <h4 className="text-center">Create New Project</h4>
           <hr />
-          <form className="row">
+          <form className="row" onSubmit={(e) => createProject(e)}>
             <div className="col-md-6">
-              <Input required
+              <Input
+                required
                 placeholder="Project Name"
                 title="Project Name"
-                onChange={(e) => setprojectName(e.target.valueprojectName)}
+                onChange={(e) => setprojectName(e.target.value)}
               />
             </div>
 
             <div className="col-md-6">
-                <select onChange={e=>setstate(e.target.value)} className='form-control' name="State" id="">
-                    <option value="">Select State</option>
-                    <option value={"New"}>New</option>
-                    <option value={"Running"}>Running</option>
-                    <option value={"Done"}>Done</option>
-                </select>
+              <select onChange={(e) => setstate(e.target.value)} className="form-control" name="State" id="">
+                <option value="">Select State</option>
+                <option value={'New'}>New</option>
+                <option value={'Running'}>Running</option>
+                <option value={'Done'}>Done</option>
+              </select>
             </div>
 
             <div className="col-md-6">
-              <Input required
+              <Input
+                required
                 placeholder="Test Suite"
                 title="testsuite"
-                onChange={(e) => settestsuite(e.target.valuetestsuite)}
+                onChange={(e) => settestsuite(e.target.value)}
               />
             </div>
 
             <div className="col-md-6">
-              <Input required placeholder="Rul Set" title="rulSet" onChange={(e) => setrulSet(e.target.valuerulSet)} />
+              <Input required placeholder="Rul Set" title="rulSet" onChange={(e) => setrulSet(e.target.value)} />
             </div>
 
             <div className="col-md-6">
-              <Input required
+              <Input
+                required
                 placeholder="SW Requirements"
                 title="swRequirements"
-                onChange={(e) => setswRequirements(e.target.valueswRequirements)}
+                onChange={(e) => setswRequirements(e.target.value)}
               />
             </div>
 
             <div className="col-md-6">
-              <Input required placeholder="Code Path" title="codePath" onChange={(e) => setcodePath(e.target.valuecodePath)} />
+              <Input required placeholder="Code Path" title="codePath" onChange={(e) => setcodePath(e.target.value)} />
             </div>
 
             <div className="col-md-6">
-              <Input required
+              <Input
+                required
                 placeholder="Test Cases"
                 title="testCases"
-                onChange={(e) => settestCases(e.target.valuetestCases)}
+                onChange={(e) => settestCases(e.target.value)}
               />
             </div>
-            <div className="col-md-12">
-                <Button type="submit" variant='contained'>Create</Button>
+            <div className="col-md-12 mt-4">
+              <Button type="submit" variant="contained">
+                Create
+              </Button>
             </div>
           </form>
         </Box>

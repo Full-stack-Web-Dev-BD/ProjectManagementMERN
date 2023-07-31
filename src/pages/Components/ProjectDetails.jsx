@@ -12,11 +12,12 @@ const ProjectDetails = () => {
   const { id } = useParams();
   useEffect(() => {
     const fetchData = async () => {
-      if(id){
-      const project = await axios.get(`${BASE_URL}/api/projects/${id}`);
-      setProjectDetails(project.data);
-      const runs= await axios.get(`${BASE_URL}/api/runs/${id}`)
-      setruns(runs.data)
+      if (id) {
+        const project = await axios.get(`${BASE_URL}/api/projects/${id}`);
+        setProjectDetails(project.data);
+        const runs = await axios.get(`${BASE_URL}/api/runs/${id}`);
+        setruns(runs.data);
+        console.log(runs.data);
       }
     };
     fetchData();
@@ -25,39 +26,43 @@ const ProjectDetails = () => {
   return (
     <div>
       <div className=" mt-4 col-md-8 offset-md-2">
-        
-      <Link to={"/dashboard/app"}> 
-      <Button className='mb-4' variant="outlined" >Go to Home</Button>
-       </Link>
+        <Link to={'/dashboard/app'}>
+          <Button className="mb-4" variant="outlined">
+            Go to Home
+          </Button>
+        </Link>
         <Card>
           <CardContent>
             <div className="p-3">
-              <h5 className="text-center"> {projectDetails.title} </h5>
-              <hr />
-              <p className="m-0 mb-4"> {projectDetails.data} </p>
-              <p className="m-0">
-                <b>Folder In :</b> {projectDetails.folderIn}
+              <p style={{textTransform:'capitalize'}}>
+                <b>Project Name</b> :{projectDetails.projectName}
               </p>
-              <p className="m-0">
-                <b>Folder Out :</b> {projectDetails.folderOut}
+              <p style={{textTransform:'capitalize'}}>
+                <b>State</b> :{projectDetails.state}
               </p>
-              <p>
-                <b>Total Runs :</b> {runs.length}
+              <p style={{textTransform:'capitalize'}}>
+                <b>Test Suite</b> :{projectDetails.testsuite}
               </p>
-              <p className="mt-4">
-                <b>Timer:</b> {projectDetails.timer}
+              <p style={{textTransform:'capitalize'}}>
+                <b>Rul Set</b> :{projectDetails.rulSet}
+              </p>
+              <p style={{textTransform:'capitalize'}}>
+                <b>SW Requirements</b> :{projectDetails.swRequirements}
+              </p>
+              <p style={{textTransform:'capitalize'}}>
+                <b>Code Path</b> :{projectDetails.codePath}
+              </p>
+              <p style={{textTransform:'capitalize'}}>
+                <b>Test Cases</b> :{projectDetails.testCases}
               </p>
             </div>
           </CardContent>
         </Card>
       </div>
       <div className=" mt-4 col-md-8 offset-md-2">
-        <Card>
-          <CardHeader>
-            <Typography variant="h4"> My Runs </Typography>
-          </CardHeader>
+        <Card> 
           <CardContent>
-            <MyRuns runs={runs} />
+            <MyRuns projectID={projectDetails._id} runs={runs} />
           </CardContent>
         </Card>
       </div>

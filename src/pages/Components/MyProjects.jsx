@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { BASE_URL } from '../../utils/constant';
+import { BASE_URL, LOCAL_USER } from '../../utils/constant';
 import ProjectCreateModal from './CreateProjectForm';
  
 
@@ -26,6 +26,7 @@ export default function MyProjects() {
       console.log(decodedToken.user._id)
     const fetchProjects = async () => {
       const projects = await axios.get(`${BASE_URL}/api/projects/user/${decodedToken.user._id}`);
+      console.log(projects.data);
       setprojects(projects.data);
       setLoading(false);
     };
@@ -42,8 +43,9 @@ export default function MyProjects() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell> Project Title </TableCell> 
-              <TableCell align="right"> Timer </TableCell>
+              <TableCell> Client Name </TableCell> 
+              <TableCell> Project Name </TableCell> 
+              <TableCell align="right"> State </TableCell>
               <TableCell align="right"> Details </TableCell>
             </TableRow>
           </TableHead>
@@ -51,11 +53,13 @@ export default function MyProjects() {
             {projects.map((row) => (
               <TableRow key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell component="th" scope="row">
-                  {row.title}
+                  {LOCAL_USER?.user?.name}
+                </TableCell> <TableCell component="th" scope="row">
+                  {row.projectName}
                 </TableCell>
                 <TableCell align="right" style={{ display: 'flex', gap: '10px' }}>
                   <Button variant="outlined" color="secondary">
-                    {row.timer}
+                    {row.state}
                   </Button>
                 </TableCell>
                 <TableCell align="right">
