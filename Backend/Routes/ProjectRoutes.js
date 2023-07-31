@@ -58,7 +58,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get projects filtered by user ID
 router.get('/user/:userId', async (req, res) => {
   try {
     const userId = req.params.userId;

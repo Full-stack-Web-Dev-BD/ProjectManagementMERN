@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MyRuns from './MyRuns';
 import { BASE_URL } from '../../utils/constant';
+import UpdateProjectForm from './UpdateProjectForm';
 
 const ProjectDetails = () => {
   const [projectDetails, setProjectDetails] = useState({});
@@ -55,6 +56,9 @@ const ProjectDetails = () => {
               <p style={{textTransform:'capitalize'}}>
                 <b>Test Cases</b> :{projectDetails.testCases}
               </p>
+              <div className='text-right'>
+                <UpdateProjectForm projectDetails={projectDetails}/>
+              </div>
             </div>
           </CardContent>
         </Card>
