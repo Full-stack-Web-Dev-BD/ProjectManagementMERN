@@ -12,9 +12,10 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 500,
+  width: "50%",
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border:'0',
+  borderRadius:'10px', 
   boxShadow: 24,
   p: 4,
 };
@@ -91,8 +92,8 @@ export default function ProjectCreateModal() {
           <h4 className="text-center">Create New Project</h4>
           <hr />
           <form className="row" onSubmit={(e) => createProject(e)}>
-            <div className="col-md-6">
-              <Input
+            <div className="col-md-6 mb-3">
+              <Input style={{width:'100%'}}
                 required
                 placeholder="Project Name"
                 title="Project Name"
@@ -100,7 +101,7 @@ export default function ProjectCreateModal() {
               />
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <select onChange={(e) => setstate(e.target.value)} className="form-control" name="State" id="">
                 <option value="">Select State</option>
                 <option value={'New'}>New</option>
@@ -109,8 +110,8 @@ export default function ProjectCreateModal() {
               </select>
             </div>
 
-            <div className="col-md-6">
-              <Input
+            <div className="col-md-6 mb-3">
+              <Input style={{width:'100%'}}
                 required
                 placeholder="Test Suite"
                 title="testsuite"
@@ -118,12 +119,12 @@ export default function ProjectCreateModal() {
               />
             </div>
 
-            <div className="col-md-6">
-              <Input required placeholder="Rul Set" title="rulSet" onChange={(e) => setrulSet(e.target.value)} />
+            <div className="col-md-6 mb-3">
+              <Input style={{width:'100%'}} required placeholder="Rul Set" title="rulSet" onChange={(e) => setrulSet(e.target.value)} />
             </div>
 
-            <div className="col-md-6">
-              <Input
+            <div className="col-md-6 mb-3">
+              <Input style={{width:'100%'}}
                 required
                 placeholder="SW Requirements"
                 title="swRequirements"
@@ -131,19 +132,19 @@ export default function ProjectCreateModal() {
               />
             </div>
 
-            <div className="col-md-6">
-              <Input required placeholder="Code Path" title="codePath" onChange={(e) => setcodePath(e.target.value)} />
+            <div className="col-md-6 mb-3">
+              <Input style={{width:'100%'}} required placeholder="Code Path" title="codePath" onChange={(e) => setcodePath(e.target.value)} />
             </div>
 
-            <div className="col-md-6">
-              <Input
+            <div className="col-md-6 mb-3">
+              <Input style={{width:'100%'}}
                 required
                 placeholder="Test Cases"
                 title="testCases"
                 onChange={(e) => settestCases(e.target.value)}
               />
             </div>
-            <div className="col-md-12 mt-4">
+            <div className="col-md-12 mt-4 text-right">
               <Button type="submit" variant="contained">
                 Create
               </Button>

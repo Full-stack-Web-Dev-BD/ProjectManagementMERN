@@ -12,11 +12,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 580,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  borderRadius:'10px',
   boxShadow: 24,
   p: 4,
+  width: "50%",
+
 };
 
 export default function CreateNewTestrunForm({ projectID }) {
@@ -95,14 +96,14 @@ export default function CreateNewTestrunForm({ projectID }) {
           <h4 className="text-center">Create New Testrun</h4>
           <hr />
           <form className="row" onSubmit={(e) => createProject(e)}>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <Input
                 style={{ width: '100%' }}
                 placeholder=" Test Run Name"
                 onChange={(e) => settestrunName(e.target.value)}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <select onChange={(e) => setstate(e.target.value)} className="form-control" name="State" id="">
                 <option value="">Select State</option>
                 <option value={'Waiting'}>Waiting</option>
@@ -111,56 +112,56 @@ export default function CreateNewTestrunForm({ projectID }) {
                 <option value={'Failed'}>Failed</option>
               </select>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <Input
                 style={{ width: '100%' }}
                 placeholder=" Test Duraton"
                 onChange={(e) => settestDuraton(e.target.value)}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <Input
                 style={{ width: '100%' }}
                 placeholder="Number Of Function Failed"
                 onChange={(e) => setnumberOfFunctionFailed(e.target.value)}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <Input
                 style={{ width: '100%' }}
                 placeholder=" Number Of Function Tested"
                 onChange={(e) => setNumberOfFunctionTested(e.target.value)}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <Input
                 style={{ width: '100%' }}
                 placeholder=" Number Of Function WO Test"
                 onChange={(e) => setNumberOfFunctionWOTest(e.target.value)}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <Input
                 style={{ width: '100%' }}
                 placeholder=" Number Of Function Passed"
                 onChange={(e) => setNumberOfFunctionPassed(e.target.value)}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <Input
                 style={{ width: '100%' }}
                 placeholder=" Branch Coverage"
                 onChange={(e) => setBranchCoverage(e.target.value)}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <Input
                 style={{ width: '100%' }}
                 placeholder=" Statement Coverage"
                 onChange={(e) => setStatementCoverage(e.target.value)}
               />
             </div>
-            <div className="col-md-12 mt-4">
+            <div className="col-md-12 text-right mt-4">
               <Button type="submit" variant="contained">
                 Create
               </Button>

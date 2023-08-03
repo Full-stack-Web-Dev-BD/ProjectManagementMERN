@@ -35,7 +35,7 @@ export default function EditTestrunForm({ projectID, testRunDetails }) {
   const [StatementCoverage, setStatementCoverage] = useState(testRunDetails.StatementCoverage);
 
   const createProject = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const data = {
       ...testRunDetails,
       testrunName,
@@ -77,7 +77,7 @@ export default function EditTestrunForm({ projectID, testRunDetails }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h4 className="text-center">View/Update  Testrun</h4>
+          <h4 className="text-center">View/Update Testrun</h4>
           <hr />
           <form className="row" onSubmit={(e) => createProject(e)}>
             <div className="col-md-6 mb-4">
@@ -89,70 +89,87 @@ export default function EditTestrunForm({ projectID, testRunDetails }) {
               />
             </div>
             <div className="col-md-6 mb-4">
+              <span style={{ textTransform: 'capitalize' }}> Creation Date/Time </span>
+              <Input
+                style={{ width: '100%' }}
+                type="date"
+                onChange={(e) => settestrunName(e.target.value)}
+                placeholder={testRunDetails.testrunName}
+              />
+            </div>
+            <div className="col-md-6 mb-4">
               <span>Status</span>
               <select onChange={(e) => setstate(e.target.value)} className="form-control" name="State" id="">
-                <option value=""> {testRunDetails.state}  </option>
+                <option value=""> {testRunDetails.state} </option>
                 <option value={'Waiting'}>Waiting</option>
                 <option value={'Running'}>Running</option>
                 <option value={'Passed'}>Passed</option>
                 <option value={'Failed'}>Failed</option>
               </select>
             </div>
+
             <div className="col-md-6 mb-4">
               <span style={{ textTransform: 'capitalize' }}> test Duration </span>
-              <Input
+              {/* <Input
                 style={{ width: '100%' }}
                 onChange={(e) => settestDuraton(e.target.value)}
                 placeholder={testRunDetails.testDuraton}
-              />
+              /> */}
+              <p style={{ textTransform: 'capitalize' }}>{testRunDetails.testDuraton}</p>
             </div>
             <div className="col-md-6 mb-4">
               <span style={{ textTransform: 'capitalize' }}> number Of Function Failed </span>
-              <Input
+              {/* <Input
                 style={{ width: '100%' }}
                 onChange={(e) => setnumberOfFunctionFailed(e.target.value)}
                 placeholder={testRunDetails.numberOfFunctionFailed}
-              />
+              /> */}
+              <p style={{ textTransform: 'capitalize' }}>{testRunDetails.numberOfFunctionFailed}</p>
             </div>
             <div className="col-md-6 mb-4">
               <span style={{ textTransform: 'capitalize' }}> Number Of Function Tested </span>
-              <Input
+              {/* <Input
                 style={{ width: '100%' }}
                 onChange={(e) => setNumberOfFunctionTested(e.target.value)}
                 placeholder={testRunDetails.NumberOfFunctionTested}
-              />
+              /> */}
+              <p style={{ textTransform: 'capitalize' }}>{testRunDetails.NumberOfFunctionTested}</p>
             </div>
             <div className="col-md-6 mb-4">
               <span style={{ textTransform: 'capitalize' }}> Number Of Function WO Test </span>
-              <Input
+              {/* <Input
                 style={{ width: '100%' }}
                 onChange={(e) => setNumberOfFunctionWOTest(e.target.value)}
                 placeholder={testRunDetails.NumberOfFunctionWOTest}
-              />
+              /> */}
+              <p style={{ textTransform: 'capitalize' }}>{testRunDetails.NumberOfFunctionWOTest}</p>
             </div>
             <div className="col-md-6 mb-4">
               <span style={{ textTransform: 'capitalize' }}> Number Of Function Passed </span>
-              <Input
+              {/* <Input
                 style={{ width: '100%' }}
                 onChange={(e) => setNumberOfFunctionPassed(e.target.value)}
                 placeholder={testRunDetails.NumberOfFunctionPassed}
-              />
+              /> */}
+              <p style={{ textTransform: 'capitalize' }}>{testRunDetails.NumberOfFunctionPassed}</p>
             </div>
             <div className="col-md-6 mb-4">
               <span style={{ textTransform: 'capitalize' }}> Branch Coverage </span>
-              <Input
+              {/* <Input
                 style={{ width: '100%' }}
                 onChange={(e) => setBranchCoverage(e.target.value)}
                 placeholder={testRunDetails.BranchCoverage}
-              />
+              /> */}
+              <p style={{ textTransform: 'capitalize' }}>{testRunDetails.BranchCoverage}</p>
             </div>
             <div className="col-md-6 mb-4">
               <span style={{ textTransform: 'capitalize' }}> Statement Coverage </span>
-              <Input
+              {/* <Input
                 style={{ width: '100%' }}
                 onChange={(e) => setStatementCoverage(e.target.value)}
                 placeholder={testRunDetails.StatementCoverage}
-              />
+              /> */}
+              <p style={{ textTransform: 'capitalize' }}>{testRunDetails.StatementCoverage}</p>
             </div>
             <div className="col-md-12 mt-4 text-right">
               <Button type="submit" variant="contained">
