@@ -34,6 +34,7 @@ export default function CreateNewTestrunForm({ projectID }) {
   const [NumberOfFunctionPassed, setNumberOfFunctionPassed] = useState('');
   const [BranchCoverage, setBranchCoverage] = useState('');
   const [StatementCoverage, setStatementCoverage] = useState('');
+  const [creationDateTime, setCreationDateTime]= useState('')
 
   const createProject = (e) => {
     e.preventDefault();
@@ -47,14 +48,13 @@ export default function CreateNewTestrunForm({ projectID }) {
       NumberOfFunctionWOTest.trim() === '' ||
       NumberOfFunctionPassed.trim() === '' ||
       BranchCoverage.trim() === '' ||
+      creationDateTime.trim() === '' ||
       StatementCoverage.trim() === ''
     ) {
       // Show a toast message using React Toastify
       toast.error('Please fill in all the fields');
       return;
     }
-
-    // All variables are filled, make the API call
     const data = {
       testrunName,
       state,
@@ -65,6 +65,7 @@ export default function CreateNewTestrunForm({ projectID }) {
       NumberOfFunctionPassed,
       BranchCoverage,
       StatementCoverage,
+      creationDate:creationDateTime
     };
     axios
       .post(`${BASE_URL}/api/runs/${projectID}`, data)
@@ -117,6 +118,14 @@ export default function CreateNewTestrunForm({ projectID }) {
                 style={{ width: '100%' }}
                 placeholder=" Test Duraton"
                 onChange={(e) => settestDuraton(e.target.value)}
+              />
+            </div>
+            
+            <div className="col-md-6 mb-3">
+              <Input
+                style={{ width: '100%' }}
+                placeholder=" Creation Date/Time"
+                onChange={(e) => setCreationDateTime(e.target.value)}
               />
             </div>
             <div className="col-md-6 mb-3">

@@ -18,6 +18,7 @@ router.post(
     check('NumberOfFunctionWOTest').notEmpty().withMessage('NumberOfFunctionWOTest is required'),
     check('NumberOfFunctionPassed').notEmpty().withMessage('NumberOfFunctionPassed is required'),
     check('BranchCoverage').notEmpty().withMessage('BranchCoverage is required'),
+    check('creationDate').notEmpty().withMessage('creationDate is required'),
     check('StatementCoverage').notEmpty().withMessage('StatementCoverage is required'),
   ],
   async (req, res) => {
@@ -37,6 +38,7 @@ router.post(
         NumberOfFunctionPassed,
         BranchCoverage,
         StatementCoverage,
+        creationDate
       } = req.body;
       const id = req.params.id;
 
@@ -51,6 +53,7 @@ router.post(
         BranchCoverage,
         StatementCoverage,
         projectID: id,
+        creationDate
       });
 
       await newRun.save();
@@ -109,6 +112,7 @@ router.put('/:projectId/:runId', async (req, res) => {
       NumberOfFunctionPassed,
       BranchCoverage,
       StatementCoverage,
+      creationDate
     } = req.body;
 
     run.testrunName = testrunName;
@@ -120,6 +124,8 @@ router.put('/:projectId/:runId', async (req, res) => {
     run.NumberOfFunctionPassed = NumberOfFunctionPassed;
     run.BranchCoverage = BranchCoverage;
     run.StatementCoverage = StatementCoverage;
+    run.creationDate = creationDate;
+    
 
     await run.save();
 

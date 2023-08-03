@@ -12,10 +12,10 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 580,
+  width:'50%',
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   boxShadow: 24,
+  borderRadius:"10px",
   p: 4,
 };
 
@@ -33,6 +33,7 @@ export default function EditTestrunForm({ projectID, testRunDetails }) {
   const [NumberOfFunctionPassed, setNumberOfFunctionPassed] = useState(testRunDetails.NumberOfFunctionPassed);
   const [BranchCoverage, setBranchCoverage] = useState(testRunDetails.BranchCoverage);
   const [StatementCoverage, setStatementCoverage] = useState(testRunDetails.StatementCoverage);
+  const [creationDateTime, setCreationDateTime]= useState('')
 
   const createProject = (e) => {
     e.preventDefault();
@@ -47,9 +48,8 @@ export default function EditTestrunForm({ projectID, testRunDetails }) {
       NumberOfFunctionPassed,
       BranchCoverage,
       StatementCoverage,
+      creationDate:creationDateTime
     };
-    console.log('mang is ', testRunDetails);
-    console.log('heda is ', data);
     axios
       .put(`${BASE_URL}/api/runs/${projectID}/${testRunDetails._id}`, data)
       .then((response) => {
@@ -91,10 +91,9 @@ export default function EditTestrunForm({ projectID, testRunDetails }) {
             <div className="col-md-6 mb-4">
               <span style={{ textTransform: 'capitalize' }}> Creation Date/Time </span>
               <Input
-                style={{ width: '100%' }}
-                type="date"
-                onChange={(e) => settestrunName(e.target.value)}
-                placeholder={testRunDetails.testrunName}
+                style={{ width: '100%' }} 
+                onChange={(e) => setCreationDateTime(e.target.value)}
+                placeholder={testRunDetails.creationDate}
               />
             </div>
             <div className="col-md-6 mb-4">

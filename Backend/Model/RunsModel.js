@@ -6,6 +6,10 @@ const runsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  creationDate: {
+    type: String,
+    required: true,
+  },
   state: {
     type: String,
     required: true,
